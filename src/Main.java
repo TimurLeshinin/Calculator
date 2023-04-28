@@ -36,6 +36,10 @@ public class Main {
                 }
             }
         }
+        if(len > 0) {
+            len =0;
+            counter++;
+        }
 
         if (f1 == f2 || counter != 2 || counterOp != 1) {
             return -1;
