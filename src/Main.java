@@ -12,16 +12,32 @@ public class Main {
     static int check_digits(String s) {
         boolean f1 = false;
         boolean f2 = false;
-
+        int counter =0;
+        int len = 0;
+        int counterOp = 0;
         for (int i = 0; i < s.length(); i++) {
             if (dictionary_nums_a.contains(String.valueOf(s.charAt(i)))) {
                 f1 = true;
+                len++;
             } else if (dictionary_nums_r.contains(String.valueOf(s.charAt(i)))) {
                 f2 = true;
+                len++;
+            }
+            else {
+
+                if("+-*/".contains(String.valueOf(s.charAt(i))))
+                {
+                    counterOp++;
+                }
+
+                if(len > 0) {
+                    len =0;
+                    counter++;
+                }
             }
         }
 
-        if (f1 == f2) {
+        if (f1 == f2 || counter != 2 || counterOp != 1) {
             return -1;
         }
         return f2 ? 1 : 0;
